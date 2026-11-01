@@ -24,6 +24,7 @@ namespace _Project.Scripts.Core
         public bool IsGameOver => _currentPhase == GamePhase.Victory || _currentPhase == GamePhase.Defeat;
 
         public event Action<GamePhase> PhaseChanged;
+        public event Action<int> RoundStarted;
         public event Action<bool> PauseChanged;
 
         private void Awake()
@@ -43,7 +44,8 @@ namespace _Project.Scripts.Core
 
         private void Start()
         {
-            // Lancé dans Start et pas dans Awake : à ce moment, tous les scripts de la scène sont abonnés à PhaseChanged
+            // Lancé dans Start et pas dans Awake : à ce moment, tous les scripts de la scène sont abonnés aux events
+            RoundStarted?.Invoke(_currentRound);
             ChangePhase(GamePhase.DrawCard);
         }
 
@@ -97,6 +99,7 @@ namespace _Project.Scripts.Core
             }
 
             _currentRound++;
+            RoundStarted?.Invoke(_currentRound);
             ChangePhase(GamePhase.DrawCard);
         }
 
