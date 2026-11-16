@@ -11,7 +11,7 @@ namespace _Project.Scripts.Core.Combat
     {
         [Header("Test")]
         [Tooltip("Composant Attaque qui fournit les dégâts. Laisser vide pour tester le garde-fou")]
-        [SerializeField] private AttackComponent _attack;
+        [SerializeField] private AttackComponent _shooterAttack;
         [Tooltip("Cible visée par le projectile")]
         [SerializeField] private HealthComponent _target;
         [Tooltip("Distance à la cible en dessous de laquelle le projectile touche, en unités")]
@@ -22,11 +22,11 @@ namespace _Project.Scripts.Core.Combat
         private void Start()
         {
             // Start passe avant le premier Update : sans Initialize, la durée de vie vaudrait 0
-            Initialize(_attack);
+            Initialize(_shooterAttack);
             _launchTime = Time.time;
-            Debug.Log(_attack == null
+            Debug.Log(_shooterAttack == null
                 ? "Projectile lancé sans Attack : il doit disparaître à l'impact sans dégâts"
-                : $"Projectile lancé : {_attack.Damage} dégâts attendus sur {_target.name}");
+                : $"Projectile lancé : {_shooterAttack.Damage} dégâts attendus sur {_target.name}");
         }
 
         protected override void Move()

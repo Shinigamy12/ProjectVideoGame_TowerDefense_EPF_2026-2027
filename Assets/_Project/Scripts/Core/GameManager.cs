@@ -94,13 +94,24 @@ namespace _Project.Scripts.Core
 
             if (_currentRound >= _maxRounds)
             {
-                ChangePhase(GamePhase.Victory);
+                TriggerVictory();
                 return;
             }
 
             _currentRound++;
             RoundStarted?.Invoke(_currentRound);
             ChangePhase(GamePhase.DrawCard);
+        }
+        
+        [ContextMenu("Victoire immédiate")]
+        public void TriggerVictory()
+        {
+            if (IsGameOver)
+            {
+                return;
+            }
+            
+            ChangePhase(GamePhase.Victory);
         }
 
         // TODO SCRUM-171 : appeler cette méthode depuis l'event de mort du composant PV de la tour

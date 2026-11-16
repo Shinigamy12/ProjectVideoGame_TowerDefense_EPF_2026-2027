@@ -67,7 +67,7 @@
                     "priority": 0
                 },
                 {
-                    "name": "GodMode",
+                    "name": "InstantVictory",
                     "type": "Button",
                     "id": "b8423d54-3e37-4b13-82f8-9d11d15319c8",
                     "expectedControlType": "",
@@ -305,7 +305,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "GodMode",
+                    "action": "InstantVictory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
