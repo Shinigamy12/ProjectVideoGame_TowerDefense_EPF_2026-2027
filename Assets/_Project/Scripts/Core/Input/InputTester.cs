@@ -9,12 +9,12 @@ namespace _Project.Scripts.Core.Input
         [SerializeField] private InputActionReference _moveAction;
         [SerializeField] private InputActionReference _attackAction;
         [SerializeField] private InputActionReference _pauseAction;
-        [SerializeField] private InputActionReference _godModeAction;
+        [SerializeField] private InputActionReference _instantVictoryAction;
 
         private void OnEnable()
         {
             _pauseAction.action.performed += OnPausePerformed;
-            _godModeAction.action.performed += OnGodModePerformed;
+            _instantVictoryAction.action.performed += OnInstantVictoryPerformed;
 
             // Méthode 2 (attaque chargée) : nécessite l'interaction Hold sur Attack dans l'asset,
             // et de retirer le test IsPressed() dans Update.
@@ -26,7 +26,7 @@ namespace _Project.Scripts.Core.Input
         private void OnDisable()
         {
             _pauseAction.action.performed -= OnPausePerformed;
-            _godModeAction.action.performed -= OnGodModePerformed;
+            _instantVictoryAction.action.performed -= OnInstantVictoryPerformed;
 
             // Méthode 2 (attaque chargée)
             // _attackAction.action.started -= OnAttackStarted;
@@ -51,7 +51,7 @@ namespace _Project.Scripts.Core.Input
         }
 
         private void OnPausePerformed(InputAction.CallbackContext context) => Debug.Log("Pause");
-        private void OnGodModePerformed(InputAction.CallbackContext context) => Debug.Log("GodMode");
+        private void OnInstantVictoryPerformed(InputAction.CallbackContext context) => Debug.Log("InstantVictory");
 
         // Méthode 2 (attaque chargée)
         // started : le bouton vient d'être enfoncé, la charge commence.
