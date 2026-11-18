@@ -148,6 +148,10 @@ namespace _Project.Scripts.Core
         {
             _currentPhase = newPhase;
             Debug.Log($"[GameManager] Manche {_currentRound}/{_maxRounds} : phase {newPhase}");
+            if (IsGameOver)
+            {
+                Time.timeScale = 0f;
+            }
             PhaseChanged?.Invoke(newPhase);
         }
     }
