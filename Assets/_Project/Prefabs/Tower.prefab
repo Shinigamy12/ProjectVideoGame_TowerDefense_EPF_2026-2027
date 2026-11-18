@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7054693887766298110}
   - component: {fileID: 4869229354756685385}
+  - component: {fileID: 6120458733019482201}
+  - component: {fileID: 6120458733019482202}
   m_Layer: 8
   m_Name: Tower
   m_TagString: Untagged
@@ -54,6 +56,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6120458733019482201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805778860434738312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf757ef27cd47134a8133437c456bb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Core.Health.HealthComponent
+  _maxHealth: 100
+--- !u!114 &6120458733019482202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805778860434738312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b67250b986427e8b45c230f0e0ac2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Core.Tower.CentralTower
 --- !u!1 &5283478583913529705
 GameObject:
   m_ObjectHideFlags: 0

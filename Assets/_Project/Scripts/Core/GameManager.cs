@@ -114,7 +114,7 @@ namespace _Project.Scripts.Core
             ChangePhase(GamePhase.Victory);
         }
 
-        // TODO SCRUM-171 : appeler cette méthode depuis l'event de mort du composant PV de la tour
+        // Appelée par CentralTower quand les PV de la tour tombent à 0
         [ContextMenu("Tour détruite")]
         public void TriggerDefeat()
         {
