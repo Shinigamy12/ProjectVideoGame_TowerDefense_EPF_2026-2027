@@ -94,7 +94,7 @@ namespace _Project.Scripts.Core
 
             if (_currentRound >= _maxRounds)
             {
-                ChangePhase(GamePhase.Victory);
+                TriggerVictory();
                 return;
             }
 
@@ -102,8 +102,19 @@ namespace _Project.Scripts.Core
             RoundStarted?.Invoke(_currentRound);
             ChangePhase(GamePhase.DrawCard);
         }
+        
+        [ContextMenu("Victoire immédiate")]
+        public void TriggerVictory()
+        {
+            if (IsGameOver)
+            {
+                return;
+            }
+            
+            ChangePhase(GamePhase.Victory);
+        }
 
-        // TODO SCRUM-171 : appeler cette méthode depuis l'event de mort du composant PV de la tour
+        // Appelée par CentralTower quand les PV de la tour tombent à 0
         [ContextMenu("Tour détruite")]
         public void TriggerDefeat()
         {
@@ -137,6 +148,10 @@ namespace _Project.Scripts.Core
         {
             _currentPhase = newPhase;
             Debug.Log($"[GameManager] Manche {_currentRound}/{_maxRounds} : phase {newPhase}");
+            if (IsGameOver)
+            {
+                Time.timeScale = 0f;
+            }
             PhaseChanged?.Invoke(newPhase);
         }
     }
