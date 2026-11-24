@@ -18,6 +18,11 @@ namespace _Project.Scripts.Grid
 
         private readonly Dictionary<IGridOccupant, List<Vector2Int>> _occupiedCells = new();
         
+        [Header("Zones bloquées")]
+        [Tooltip("Zones du décor où l'on ne peut pas construire, ou que " +
+                 "les ennemis au sol ne peuvent pas traverser")]
+        [SerializeField] private List<BlockedZone> _blockedZones = new();
+        
         /// <summary>
         /// Au démarage du script, remplis les variables _buildable et _walkable de true et laisse
         /// _occupants remplie de Null. 
@@ -63,6 +68,23 @@ namespace _Project.Scripts.Grid
                 Vector3 end = transform.position + new Vector3(_width / 2, 0f, z);
                 Gizmos.color = Color.grey;
                 Gizmos.DrawLine(start, end);
+            }
+
+            foreach (BlockedZone zone in _blockedZones)
+            {
+                if (zone.Type == BlockedZoneType.Impassable)
+                {
+                    Gizmos.color = new Color(1f, 0f, 0f, 0.4f);
+                }
+                else
+                {
+                    Gizmos.color = new Color(1f, 0.5f, 0f, 0.4f);
+                }
+                Vector3 zoneCenter = CellToWorld(zone.Position)
+                                     + new Vector3((zone.Size.x - 1) / 2f, 
+                                         0.02f, (zone.Size.y - 1) / 2f);
+                Vector3 zoneSize = new Vector3(zone.Size.x, 0f, zone.Size.y);
+                Gizmos.DrawCube(zoneCenter, zoneSize);
             }
         }
 
