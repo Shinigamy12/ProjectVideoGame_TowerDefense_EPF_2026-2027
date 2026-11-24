@@ -495,6 +495,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::_Project.Scripts.Grid.GridComponent
   _width: 92
   _height: 60
+  _blockedZones:
+  - _position: {x: 10, y: 10}
+    _size: {x: 10, y: 45}
+    _type: 1
+  - _position: {x: 50, y: 10}
+    _size: {x: 30, y: 10}
+    _type: 0
 --- !u!4 &1856014503
 Transform:
   m_ObjectHideFlags: 0
